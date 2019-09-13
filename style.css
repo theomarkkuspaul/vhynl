@@ -1,0 +1,53 @@
+body {
+  font-family: 'American Typewriter'
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.record {
+  height: 500px;
+  width: 500px;
+  background-color: black;
+  position: absolute;
+}
+
+.label {
+  height: 250px;
+  width: 250px;
+  background-color: #B89E01;
+  position: relative;
+  top: 25%;
+  left: 25%;
+  display: flex;
+}
+
+.hole {
+  height: 15px;
+  width: 15px;
+  background-color: white;
+  margin: auto;
+}
+
+.label .text {
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  left: 25px;
+  top: 25px;
+  text-align: center;
+}
+
+.spinning {
+  animation: spin 1.81s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}

@@ -38,16 +38,3 @@ body {
   top: 25px;
   text-align: center;
 }
-
-.spinning {
-  animation: spin 1.81s linear infinite;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(360deg);
-  }
-}

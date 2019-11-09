@@ -11,8 +11,7 @@ $(() => {
 
 function spinRecord () {
   // rotate record every 4.8 ms i.e. 45bpm
-  // const repeatSpeed = 4.8;
-  const repeatSpeed = 20;
+  const repeatSpeed = 4.8;
   setInterval(rotateRecord, repeatSpeed);
 }
 

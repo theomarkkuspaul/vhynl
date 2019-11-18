@@ -10,7 +10,6 @@ body {
   height: 500px;
   width: 500px;
   background-color: black;
-  position: absolute;
 }
 
 .label {
@@ -37,4 +36,13 @@ body {
   left: 25px;
   top: 25px;
   text-align: center;
+}
+
+button {
+  border: none;
+}
+
+button img {
+  height: 100px;
+  width: 100px;
 }

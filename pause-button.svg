@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="110px" height="110px" viewBox="0 0 110 110" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Pause Button</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Controls" transform="translate(-307.000000, -148.000000)" stroke="#000000" stroke-width="10">
+            <g id="Pause-Button" transform="translate(312.000000, 153.000000)">
+                <circle id="Oval" cx="50" cy="50" r="50"></circle>
+                <path d="M37,25 L37,75" id="Line" stroke-linecap="square"></path>
+                <path d="M62,25 L62,75" id="Line" stroke-linecap="square"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -2,6 +2,10 @@ let recordPaused = true;
 let recordHolding = false;
 let currentRotation = 0;
 
+const song = new Howl({
+  src: ['tune.mp3']
+});
+
 $(() => {
   spinRecord();
   handleRecordDrag();
@@ -29,12 +33,14 @@ function rotateRecord () {
 function handlePlayClick () {
   $('#play').click(function(e) {
     recordPaused = false;
+    song.play();
   });
 }
 
 function handlePauseClick () {
   $('#pause').click(function(e) {
     recordPaused = true;
+    song.pause();
   });
 }
 
@@ -72,6 +78,7 @@ function handleRecordDrag () {
     e.preventDefault();
     let x, y;
     recordHolding = true;
+    song.pause()
 
     const {top, left, height, width} = this.getBoundingClientRect();
     center = {
@@ -114,6 +121,7 @@ function handleRecordDrag () {
   var stop = function() {
     currentRotation += rotation;
     recordHolding = false;
+    song.play();
     return active = false;
   };
 

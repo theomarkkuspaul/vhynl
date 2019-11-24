@@ -2,41 +2,49 @@
 <html>
 <head>
   <title>Record Prototype</title>
+  <!-- Prevent mobile double tap or pinch zoom -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> 
+
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script type="text/javascript" src="main.js"></script>
 </head>
 <body>
-  <div id="rotate" class="record circle spinning">
-    <div class="label circle">
-      <div class="text">
-        <h2 class="name">
-          <mark>Theo<br /> Paul</mark>
-        </h2>
-      </div>
+  <div class="housing">
+    <div id="rotate" class="record circle spinning">
+      <div class="label circle">
+        <div class="text">
+          <h2 class="name">
+            <mark>Theo<br /> Paul</mark>
+          </h2>
+        </div>
 
-      <div class="left-hole">
-        <a href="/about">
-          <mark>About</mark>
-        </a>
-      </div>
+        <div class="left-hole">
+          <a href="/about">
+            <mark>About</mark>
+          </a>
+        </div>
 
-      <div class="hole circle"></div>
+        <div class="hole circle"></div>
 
-      <div class="right-hole">
-        <a href="/projects">
-          <mark>Projects</mark>
-        </a>
+        <div class="right-hole">
+          <a href="/projects">
+            <mark>Projects</mark>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-  <button id="play" class="button">
-    <img src="/play-button.svg" alt="Play">
-  </button>
 
-  <button id="pause" class="button">
-    <img src="/pause-button.svg" alt="Pause">
-  </button>
+    <div class="controls">
+      <button id="play" class="button">
+        <img src="/play-button.svg" alt="Play">
+      </button>
+
+      <button id="pause" class="button">
+        <img src="/pause-button.svg" alt="Pause">
+      </button>
+    </div>
+  </div>
 </body>
 </html>

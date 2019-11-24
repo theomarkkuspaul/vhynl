@@ -1,5 +1,12 @@
+html, body {
+  height: 100%;
+}
+
 body {
-  font-family: 'American Typewriter'
+  font-family: 'American Typewriter';
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .circle {
@@ -7,14 +14,14 @@ body {
 }
 
 .record {
-  height: 500px;
-  width: 500px;
+  height: 300px;
+  width: 300px;
   background-color: black;
 }
 
 .label {
-  height: 250px;
-  width: 250px;
+  height: 150px;
+  width: 150px;
   position: relative;
   background: url('/street.jpg');
   background-size: cover;
@@ -38,7 +45,7 @@ body {
 
 a {
   font-weight: bold;
-  font-size: 22px;
+  font-size: 0.8rem;
 }
 
 .right-hole {
@@ -51,24 +58,33 @@ mark {
   padding: 0.2rem;
   background-color:#FFCE19;
   display: inline-block;
+  font-size: inherit;
   text-decoration: inherit;
 }
 
 .label .text {
-  height: 200px;
-  width: 200px;
+  height: 120px;
+  width: 120px;
   position: absolute;
-  left: 25px;
-  top: 25px;
+  left: 18px;
+  top: 18px;
   text-align: center;
 }
 
 .label .text h2 {
   margin-top: 0;
+  font-size: 0.8rem;
+}
+
+.controls {
+  text-align: center;
+  margin-top: 3rem;
 }
 
 button {
   border: none;
+  text-align: center;
+  background-color: white;
 }
 
 button img {

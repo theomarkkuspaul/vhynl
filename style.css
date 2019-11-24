@@ -78,11 +78,13 @@ mark {
 
 .controls {
   text-align: center;
+  margin-top: 3rem;
 }
 
 button {
   border: none;
   text-align: center;
+  background-color: white;
 }
 
 button img {

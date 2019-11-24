@@ -48,13 +48,19 @@ function handleRecordDrag () {
     y: 0
   };
 
-  document.ontouchmove = e => e.preventDefault();  // prevent scrolling
+  // document.ontouchmove = e => e.preventDefault();  // prevent scrolling
 
   // Runs when the web page is first opened
   const init = function() {
     const target = $('#rotate');
     target.on("mousedown", start);
     target.on("mousemove", rotate);
+
+    // Mobile
+    target.on("touchstart", start);
+    target.on("touchend", stop);
+    target.on("touchmove", rotate);
+
     return target.on("mouseup", stop);
   };
 
@@ -64,6 +70,7 @@ function handleRecordDrag () {
   // Set the starting angle of the touch relative to target's center
   var start = function(e) {
     e.preventDefault();
+    let x, y;
     recordHolding = true;
 
     const {top, left, height, width} = this.getBoundingClientRect();
@@ -71,8 +78,15 @@ function handleRecordDrag () {
       x: left + (width/2),
       y: top + (height/2)
     };
-    const x = e.clientX - center.x;
-    const y = e.clientY - center.y;
+
+    if (e.clientX && e.clientY) {
+      x = e.clientX - center.x;
+      y = e.clientY - center.y;
+    } else if (e.touches) {
+      x = e.touches[0].clientX - center.x;
+      y = e.touches[0].clientY - center.y;
+    }
+
     startAngle = R2D * Math.atan2(y, x);
     return active = true;
   };
@@ -80,12 +94,20 @@ function handleRecordDrag () {
   // Rotate target
   var rotate = function(e) {
     e.preventDefault();
+    let x, y;
 
-    const x = e.clientX - center.x;
-    const y = e.clientY - center.y;
+    if (e.clientX && e.clientY) {
+      x = e.clientX - center.x;
+      y = e.clientY - center.y;
+    } else if (e.touches) {
+      x = e.touches[0].clientX - center.x;
+      y = e.touches[0].clientY - center.y;
+    }
+
     const d = R2D * Math.atan2(y, x);
     rotation = d - startAngle;
-    if (active) { return this.style.webkitTransform = `rotate(${currentRotation + rotation}deg)`; }
+
+    if (active) { return this.style.transform = `rotate(${currentRotation + rotation}deg)`; }
   };
 
   // Save the final angle of rotation

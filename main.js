@@ -2,6 +2,10 @@ let recordPaused = true;
 let recordHolding = false;
 let currentRotation = 0;
 
+let timerInterval;
+
+const DELAY = 50;
+
 const song = new Howl({
   src: ['tune.mp3']
 });
@@ -37,6 +41,25 @@ function handlePlayClick () {
     if (!song.playing())
       song.play();
 
+    timerInterval = setInterval(function() {
+      let minutes = 0, seconds = Math.floor(song.seek());
+
+      if (seconds >= 60) {
+        minutes++;
+        seconds -= 60;
+      }
+
+      if (minutes < 10)
+        minutes = "0" + minutes;
+
+      if (seconds < 10)
+        seconds = "0" + seconds;
+
+      const time = `${minutes}:${seconds}`;
+
+      $('.timer').html(time);
+    }, DELAY)
+
     // toggle control button to prompt pause
     $(this).hide();
     $('#pause').show();
@@ -49,6 +72,8 @@ function handlePauseClick () {
 
     if (song.playing())
       song.pause();
+
+    clearTimeout(timerInterval);
 
     // toggle control button to prompt play
     $(this).hide();

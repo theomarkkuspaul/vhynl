@@ -17,9 +17,15 @@ mark {
   font-size: inherit;
   text-decoration: inherit;
 }
+
 .controls {
   text-align: center;
-  margin-top: 3rem;
+  margin-top: 1.5rem;
+}
+
+.timer {
+  margin-top: 0;
+  font-size: 1.5rem;
 }
 
 button {

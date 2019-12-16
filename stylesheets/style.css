@@ -1,0 +1,43 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'American Typewriter';
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+mark {
+  padding: 0.2rem;
+  background-color:#FFCE19;
+  display: inline-block;
+  font-size: inherit;
+  text-decoration: inherit;
+}
+.controls {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+button {
+  border: none;
+  text-align: center;
+  background-color: white;
+}
+
+button img {
+  height: 100px;
+  width: 100px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+}

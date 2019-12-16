@@ -1,0 +1,140 @@
+@media only screen and (max-width: 768px) {
+  .housing {
+    padding-top: 10rem;
+  }
+
+  .record {
+    margin: auto;
+    height: 300px;
+    width: 300px;
+    background-color: black;
+  }
+
+  .label {
+    height: 150px;
+    width: 150px;
+    position: relative;
+    background: url('/images/street.jpg');
+    background-size: cover;
+    top: 25%;
+    left: 25%;
+    display: flex;
+  }
+
+  .hole {
+    height: 15px;
+    width: 15px;
+    background-color: white;
+    margin: auto;
+  }
+
+  .top-hole {
+    position: absolute;
+    left: 36%;
+    top: 12%;
+  }
+
+  .left-hole {
+    position: absolute;
+    top: 44%;
+    left: 13%;
+  }
+
+  .right-hole {
+    position: absolute;
+    top: 44%;
+    left: 58%;
+  }
+
+  .label .text {
+    height: 120px;
+    width: 120px;
+    position: absolute;
+    left: 18px;
+    top: 18px;
+    text-align: center;
+  }
+
+  .label .text h2, h1 {
+    margin-top: 0;
+    font-size: 0.8rem;
+  }
+
+  a {
+    font-size: 0.8rem;
+  }
+}
+
+
+/* Desktop */
+@media (min-width: 768px) {
+  .housing {
+    padding-top: 1rem;
+  }
+  
+  .record {
+    margin: auto;
+    height: 600px;
+    width: 600px;
+    background-color: black;
+  }
+
+  .label {
+    height: 300px;
+    width: 300px;
+    position: relative;
+    background: url('/images/street.jpg');
+    background-size: cover;
+    top: 25%;
+    left: 25%;
+    display: flex;
+  }
+
+  .hole {
+    height: 15px;
+    width: 15px;
+    background-color: white;
+    margin: auto;
+  }
+
+  .top-hole {
+    position: absolute;
+    left: 33%;
+    top: 4%;
+  }
+
+  .left-hole {
+    position: absolute;
+    top: 44%;
+    left: 16%;
+  }
+
+  .right-hole {
+    position: absolute;
+    top: 44%;
+    left: 58%;
+  }
+
+  .label .text {
+    height: 320px;
+    width: 320px;
+    position: absolute;
+    left: 18px;
+    top: 18px;
+    text-align: center;
+  }
+
+  .label .text h2 {
+    margin-top: 0;
+    font-size: 0.8rem;
+  }
+
+  a {
+    font-size: 1.5rem;
+  }
+}
+
+.record a {
+  font-weight: bold;
+  
+}

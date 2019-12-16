@@ -36,6 +36,10 @@ function handlePlayClick () {
 
     if (!song.playing())
       song.play();
+
+    // toggle control button to prompt pause
+    $(this).hide();
+    $('#pause').show();
   });
 }
 
@@ -45,6 +49,10 @@ function handlePauseClick () {
 
     if (song.playing())
       song.pause();
+
+    // toggle control button to prompt play
+    $(this).hide();
+    $('#play').show();
   });
 }
 

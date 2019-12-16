@@ -136,5 +136,8 @@
 
 .record a {
   font-weight: bold;
-  
+}
+
+#pause {
+  display: none;
 }

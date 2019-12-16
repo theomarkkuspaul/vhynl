@@ -33,14 +33,18 @@ function rotateRecord () {
 function handlePlayClick () {
   $('#play').click(function(e) {
     recordPaused = false;
-    song.play();
+
+    if (!song.playing())
+      song.play();
   });
 }
 
 function handlePauseClick () {
   $('#pause').click(function(e) {
     recordPaused = true;
-    song.pause();
+
+    if (song.playing())
+      song.pause();
   });
 }
 

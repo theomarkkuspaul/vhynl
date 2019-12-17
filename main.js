@@ -42,10 +42,11 @@ function handlePlayClick () {
       song.play();
 
     timerInterval = setInterval(function() {
-      let minutes = 0, seconds = Math.floor(song.seek());
+      const songPlayTime = typeof(song.seek()) === 'object' ? 0 : song.seek();
+      let minutes = 0, seconds = Math.floor(songPlayTime);
 
-      if (seconds >= 60) {
-        minutes++;
+      while (seconds >= 60) {
+        minutes += 1;
         seconds -= 60;
       }
 

@@ -1,6 +1,8 @@
 let recordPaused = true;
 let recordHolding = false;
 let currentRotation = 0;
+let foo;
+
 
 let timerInterval;
 
@@ -10,9 +12,10 @@ const song = new Howl({
   src: ['tune.mp3']
 });
 
+// Each 360 degree rotation represents aorund 0.85 - 1.5 seconds of song time
 $(() => {
   spinRecord();
-  handleRecordDrag();
+  // handleRecordDrag();
   handlePlayClick();
   handlePauseClick();
 });
@@ -87,6 +90,7 @@ function handleRecordDrag () {
   let active = false;    // true if mouse is down
   let rotation = 0;      // amount of last rotation event
   let startAngle = 0;    // starting angle of rotation event
+  let endAngle = 0;
   let center = {          // center point coords of target
     x: 0,
     y: 0
@@ -99,13 +103,14 @@ function handleRecordDrag () {
     const target = $('#rotate');
     target.on("mousedown", start);
     target.on("mousemove", rotate);
+    target.on("mouseup", stop);
 
     // Mobile
     target.on("touchstart", start);
     target.on("touchend", stop);
     target.on("touchmove", rotate);
 
-    return target.on("mouseup", stop);
+    return;
   };
 
   // Convert radians to degrees
@@ -119,6 +124,7 @@ function handleRecordDrag () {
     song.pause()
 
     const {top, left, height, width} = this.getBoundingClientRect();
+
     center = {
       x: left + (width/2),
       y: top + (height/2)
@@ -132,7 +138,11 @@ function handleRecordDrag () {
       y = e.touches[0].clientY - center.y;
     }
 
+    foo = this.style.transform;
+
     startAngle = R2D * Math.atan2(y, x);
+    startAngle = normaliseAngle(startAngle);
+
     return active = true;
   };
 
@@ -152,13 +162,18 @@ function handleRecordDrag () {
     const d = R2D * Math.atan2(y, x);
     rotation = d - startAngle;
 
-    if (active) { return this.style.transform = `rotate(${currentRotation + rotation}deg)`; }
+    let newAngle = normaliseAngle(currentRotation + rotation);
+
+    if (active) { return this.style.transform = `rotate(${newAngle}deg)`; }
   };
 
   // Save the final angle of rotation
   var stop = function() {
-    currentRotation += rotation;
     recordHolding = false;
+    currentRotation += rotation;
+    currentRotation = normaliseAngle(currentRotation);
+    const endAngle = parseInt(getEndAngle(foo))
+    const diff = currentRotation - endAngle;
     song.play();
     return active = false;
   };

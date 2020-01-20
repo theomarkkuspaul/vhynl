@@ -1,12 +1,13 @@
 let recordPaused = true;
 let recordHolding = false;
 let currentRotation = 0;
-let foo;
 
 
 let timerInterval;
 
 const DELAY = 50;
+// rotate record every 4.8 ms i.e. 45bpm
+const RECORD_REPEAT_SPEED = 4.8;
 
 const song = new Howl({
   src: ['tune.mp3']
@@ -21,13 +22,14 @@ $(() => {
 });
 
 function spinRecord () {
-  // rotate record every 4.8 ms i.e. 45bpm
-  const repeatSpeed = 4.8;
-  setInterval(rotateRecord, repeatSpeed);
+  setInterval(rotateRecord, RECORD_REPEAT_SPEED);
 }
 
 function rotateRecord () {
   if (recordHolding)
+    return;
+
+  if (!isSongLoaded())
     return;
 
   if (!recordPaused) {
@@ -85,6 +87,10 @@ function handlePauseClick () {
   });
 }
 
+function isSongLoaded () {
+  return song.state() === 'loaded';
+}
+
 function handleRecordDrag () {
   // Thank you https://bl.ocks.org/joyrexus/7207044
   let active = false;    // true if mouse is down
@@ -137,8 +143,6 @@ function handleRecordDrag () {
       x = e.touches[0].clientX - center.x;
       y = e.touches[0].clientY - center.y;
     }
-
-    foo = this.style.transform;
 
     startAngle = R2D * Math.atan2(y, x);
     startAngle = normaliseAngle(startAngle);

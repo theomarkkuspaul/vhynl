@@ -51,25 +51,7 @@ function handlePlayClick () {
     if (!recordInterval)
       spinRecord();
 
-    timerInterval = setInterval(function() {
-      const songPlayTime = typeof(song.seek()) === 'object' ? 0 : song.seek();
-      let minutes = 0, seconds = Math.floor(songPlayTime);
-
-      while (seconds >= 60) {
-        minutes += 1;
-        seconds -= 60;
-      }
-
-      if (minutes < 10)
-        minutes = "0" + minutes;
-
-      if (seconds < 10)
-        seconds = "0" + seconds;
-
-      const time = `${minutes}:${seconds}`;
-
-      $('.timer').html(time);
-    }, DELAY)
+    timerInterval = setInterval(calculateTimer, DELAY)
 
     // toggle control button to prompt pause
     $(this).hide();
@@ -96,15 +78,35 @@ function isSongLoaded () {
   return song.state() === 'loaded';
 }
 
+function calculateTimer () {
+  const songPlayTime = typeof(song.seek()) === 'object' ? 0 : song.seek();
+  let minutes = 0, seconds = Math.floor(songPlayTime);
+
+  while (seconds >= 60) {
+    minutes += 1;
+    seconds -= 60;
+  }
+
+  if (minutes < 10)
+    minutes = "0" + minutes;
+
+  if (seconds < 10)
+    seconds = "0" + seconds;
+
+  const time = `${minutes}:${seconds}`;
+
+  $('.timer').html(time);
+}
+
 function bindSongEvents () {
   song.on('end', songEvent => {
-      clearInterval(timerInterval);
-      clearInterval(recordInterval);
-      timerInterval, recordInterval = false;
-      $('#pause').hide();
-      $('#play').show();
-      $('.timer').html('END');
-  })
+    clearInterval(timerInterval);
+    clearInterval(recordInterval);
+    timerInterval, recordInterval = false;
+    $('#pause').hide();
+    $('#play').show();
+    $('.timer').html('END');
+  });
 }
 
 function handleRecordDrag () {

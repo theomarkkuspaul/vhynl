@@ -4,25 +4,27 @@ let currentRotation = 0;
 
 
 let timerInterval;
+let recordInterval;
 
 const DELAY = 50;
 // rotate record every 4.8 ms i.e. 45bpm
 const RECORD_REPEAT_SPEED = 4.8;
 
 const song = new Howl({
-  src: ['tune.mp3']
+  src: ['tune.m4a']
 });
 
 // Each 360 degree rotation represents aorund 0.85 - 1.5 seconds of song time
 $(() => {
   spinRecord();
+  bindSongEvents();
   // handleRecordDrag();
   handlePlayClick();
   handlePauseClick();
 });
 
 function spinRecord () {
-  setInterval(rotateRecord, RECORD_REPEAT_SPEED);
+  recordInterval = setInterval(rotateRecord, RECORD_REPEAT_SPEED);
 }
 
 function rotateRecord () {
@@ -45,6 +47,9 @@ function handlePlayClick () {
 
     if (!song.playing())
       song.play();
+
+    if (!recordInterval)
+      spinRecord();
 
     timerInterval = setInterval(function() {
       const songPlayTime = typeof(song.seek()) === 'object' ? 0 : song.seek();
@@ -79,7 +84,7 @@ function handlePauseClick () {
     if (song.playing())
       song.pause();
 
-    clearTimeout(timerInterval);
+    clearInterval(timerInterval);
 
     // toggle control button to prompt play
     $(this).hide();
@@ -89,6 +94,17 @@ function handlePauseClick () {
 
 function isSongLoaded () {
   return song.state() === 'loaded';
+}
+
+function bindSongEvents () {
+  song.on('end', songEvent => {
+      clearInterval(timerInterval);
+      clearInterval(recordInterval);
+      timerInterval, recordInterval = false;
+      $('#pause').hide();
+      $('#play').show();
+      $('.timer').html('END');
+  })
 }
 
 function handleRecordDrag () {

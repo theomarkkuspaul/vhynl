@@ -105,7 +105,7 @@ function bindSongEvents () {
     timerInterval, recordInterval = false;
     $('#pause').hide();
     $('#play').show();
-    $('.timer').html('END');
+    $('.timer').html('fin.');
   });
 }
 

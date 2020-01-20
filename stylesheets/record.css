@@ -136,6 +136,7 @@
 
 .record a {
   font-weight: bold;
+  text-decoration-thickness: 0.2rem;
 }
 
 #pause {

@@ -3,6 +3,7 @@ html, body {
 }
 
 body {
+  background-color: #65e3ff;
   font-family: 'American Typewriter';
 }
 
@@ -12,20 +13,27 @@ body {
 
 mark {
   padding: 0.2rem;
-  background-color:#FFCE19;
+  background-color: #ffe065;
   display: inline-block;
   font-size: inherit;
   text-decoration: inherit;
 }
+
 .controls {
   text-align: center;
-  margin-top: 3rem;
+  margin-top: 1.5rem;
+}
+
+.timer {
+  margin-top: 0;
+  font-size: 1.5rem;
 }
 
 button {
   border: none;
   text-align: center;
   background-color: white;
+  background: none;
 }
 
 button img {

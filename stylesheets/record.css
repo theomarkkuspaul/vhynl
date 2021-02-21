@@ -1,6 +1,6 @@
 @media only screen and (max-width: 768px) {
   .housing {
-    padding-top: 10rem;
+    padding-top: 5rem;
   }
 
   .record {
@@ -134,7 +134,20 @@
   }
 }
 
+.record {
+  background-color: #ff65a0;
+}
+
 .record a {
   font-weight: bold;
-  
+  text-decoration-thickness: 0.2rem;
+}
+
+#pause {
+  display: none;
+}
+
+p {
+  font-weight: bold;
+  color: #ffe065;
 }
